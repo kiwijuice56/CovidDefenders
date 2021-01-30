@@ -1,16 +1,28 @@
 extends Area2D
 
+export var cost:= 10
 export var projectile: PackedScene 
 export var attack_delay := 0.5
 var target_queue:= []
 
+var in_path := false
 onready var timer := $Timer
 
 func _ready():
 	connect("area_entered", self, "area_entered")
 	connect("area_exited", self, "area_exited")
+	$PlacementArea.connect("body_entered", self, "body_entered")
+	$PlacementArea.connect("body_exited", self, "body_exited")
 	$Timer.connect("timeout", self, "shoot")
-	$Timer.start(attack_delay)
+
+func body_exited(body: StaticBody2D):
+	in_path = false
+
+func body_entered(body: StaticBody2D):
+	in_path = true
+
+func _process(delta):
+	global_position = get_global_mouse_position().snapped(Vector2(16,16)) - Vector2(8,8)
 
 func shoot():
 	timer.start(attack_delay)

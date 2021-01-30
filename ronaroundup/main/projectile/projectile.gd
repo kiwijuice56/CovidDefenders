@@ -1,7 +1,15 @@
 extends Area2D
 
+export var damage:= 1
 export var speed:= 0
 var target
+
+func _ready():
+	connect("area_entered", self, "area_entered")
+
+func area_entered(area: Area2D):
+	area.health -= damage
+	queue_free()
 
 func _physics_process(delta):
 	var vel := Vector2()

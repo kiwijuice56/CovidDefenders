@@ -4,7 +4,6 @@
 [ext_resource path="res://main/enemy/covid/covid.png" type="Texture" id=2]
 
 [node name="Covid" instance=ExtResource( 1 )]
-collision_layer = 2
 speed = 10.0
 
 [node name="Sprite" parent="." index="0"]
