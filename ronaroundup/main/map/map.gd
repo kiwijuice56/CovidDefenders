@@ -1,7 +1,7 @@
 extends Node
 
 #one arr for each wave, with ints representing the virus order? idk
-export (Array, Array) var waves := []
+export (Array, Array, int) var waves := []
 export (Array, String) var enemies:= []
 export (Array, int) var times := []
 
@@ -13,10 +13,14 @@ func enemy_spawned():
 	var new_enemy = enemies[waves[wave][0]].instance()
 	waves[wave].pop_front()
 	new_enemy.path = $Path.get_children()
-	add_child(new_enemy)
+	$Enemies.add_child(new_enemy)
 	new_enemy.global_position = $Path.get_child(0).global_position
 	if len(waves[wave]) == 0:
-		print("done, idk what to do now")
+		if len(waves)-1 <= wave+1:
+			yield($Enemies, "all_dead")
+			get_parent().next_map()
+		else:
+			get_parent().new_wave()
 	else:
 		timer.start(times[wave])
 

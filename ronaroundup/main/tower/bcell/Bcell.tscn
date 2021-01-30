@@ -4,7 +4,7 @@
 [ext_resource path="res://main/tower/bcell/bcell.png" type="Texture" id=2]
 [ext_resource path="res://main/projectile/antibody/Antibody.tscn" type="PackedScene" id=3]
 
-[node name="Tower" instance=ExtResource( 1 )]
+[node name="BCell" instance=ExtResource( 1 )]
 projectile = ExtResource( 3 )
 
 [node name="Sprite" parent="." index="0"]

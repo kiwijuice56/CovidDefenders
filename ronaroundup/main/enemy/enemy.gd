@@ -12,12 +12,14 @@ func set_health(new_health):
 	health = new_health
 	if health <= 0:
 		main.cash += drop
+		get_parent().remove_child(self)
 		queue_free()
 
 func at_point():
 	if len(path)-1 == 0:
 		set_physics_process(false)
 		main.life -= 3
+		get_parent().remove_child(self)
 		queue_free() #it escaped! decrease health
 	path.pop_front()
 

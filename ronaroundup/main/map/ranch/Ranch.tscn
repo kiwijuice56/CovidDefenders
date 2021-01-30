@@ -5,9 +5,9 @@
 [ext_resource path="res://main/map/point/Point.tscn" type="PackedScene" id=3]
 
 [node name="Ranch" instance=ExtResource( 1 )]
-waves = [ [ 0, 0, 0 ], [  ], [  ] ]
+waves = [ [ 0, 0, 0 ], [ 0, 0, 0, 0, 0 ], [  ] ]
 enemies = [ "res://main/enemy/covid/Covid.tscn" ]
-times = [ 1 ]
+times = [ 2, 1 ]
 
 [node name="TileMap" parent="." index="0"]
 tile_set = ExtResource( 2 )
