@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tcell.png-a5b26ddba0b15606f5cec6505e858a46.stex"
+path="res://.import/upgraded_acid.png-f7ebd5ab31761e5e5b06fcc018e3d863.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://main/tower/tcell/tcell.png"
-dest_files=[ "res://.import/tcell.png-a5b26ddba0b15606f5cec6505e858a46.stex" ]
+source_file="res://main/projectile/dendrite/upgraded_acid.png"
+dest_files=[ "res://.import/upgraded_acid.png-f7ebd5ab31761e5e5b06fcc018e3d863.stex" ]
 
 [params]
 

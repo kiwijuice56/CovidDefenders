@@ -2,6 +2,7 @@ extends Area2D
 
 export var explosion: PackedScene
 export var pierce := false
+export var track := false
 export var damage:= 1
 export var speed:= 0
 var target
@@ -13,7 +14,9 @@ func delete():
 func _ready():
 	connect("area_entered", self, "area_entered")
 	$VisibilityNotifier2D.connect("screen_exited", self, "delete")
-	vel = (target.global_position - global_position).normalized() * speed
+
+func start():
+	vel = (target.global_position- global_position).normalized()
 
 func area_entered(area: Area2D):
 	area.health -= damage
@@ -27,8 +30,6 @@ func area_entered(area: Area2D):
 		queue_free()
 
 func _physics_process(delta):
-	if target and not pierce:
+	if target and track:
 		 vel = (target.global_position - global_position).normalized()
 	global_position += vel * speed * delta
-	var dir = acos(vel.x) *  -1 if vel.y < 0 else acos(vel.x) #https://godotengine.org/qa/90713/how-to-make-object-point-towards-another-2d
-	rotation_degrees = (rad2deg(dir))                 #very easy to implement! :)

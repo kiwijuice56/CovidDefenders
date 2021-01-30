@@ -2,13 +2,16 @@ extends VBoxContainer
 
 onready var main := get_tree().get_root().get_child(0)
 
+func reset():
+	$Upgrade.visible = false
+	$Sell.visible = false
+	$Name.text = "Selected: ..."
+	$Value.text = ""
+	main.get_node("GameUI").action_chosen("")
+
 func _input(event):
 	if Input.is_action_just_released("ui_accept"):
-		$Upgrade.visible = false
-		$Sell.visible = false
-		$Name.text = "Selected: ..."
-		$Value.text = ""
-		main.get_node("GameUI").action_chosen("")
+		reset()
 
 func check_cash(prices: Array, cash):
 	for i in range(len($TButtons.get_children())):

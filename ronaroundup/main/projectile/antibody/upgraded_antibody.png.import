@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/antibody2.png-0e6f01e8fee57e0a712f82315e03a36c.stex"
+path="res://.import/upgraded_antibody.png-5b3380ead18bfc8a9b96d82f1ae405e1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://main/projectile/antibody2/antibody2.png"
-dest_files=[ "res://.import/antibody2.png-0e6f01e8fee57e0a712f82315e03a36c.stex" ]
+source_file="res://main/projectile/antibody/upgraded_antibody.png"
+dest_files=[ "res://.import/upgraded_antibody.png-5b3380ead18bfc8a9b96d82f1ae405e1.stex" ]
 
 [params]
 

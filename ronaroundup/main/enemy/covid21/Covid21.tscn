@@ -4,7 +4,7 @@
 [ext_resource path="res://main/enemy/covid21/covid21.png" type="Texture" id=2]
 
 [node name="Covid21" instance=ExtResource( 1 )]
-drop = 5
+drop = 4
 health = 2
 speed = 60.0
 damage = 5

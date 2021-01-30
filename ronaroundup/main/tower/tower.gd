@@ -1,5 +1,6 @@
 extends Area2D
 
+export var upgraded_projectile_sprite: Resource
 export var upgraded_sprite: Resource
 export var cost:= 10
 export var projectile: PackedScene 
@@ -8,6 +9,7 @@ export var upgrade_cost := 20
 export var upgraded_delay := 0.4
 export var upgraded_damage := 1
 export var upgraded_name := ""
+export var offset := 1
 var target_queue:= []
 var upgraded := false
 var in_path := false setget set_in_path
@@ -63,14 +65,19 @@ func shoot():
 		return
 	var enemy = target_queue[0]
 	var new_p = projectile.instance()
-	if upgraded: new_p.damage += upgraded_damage
+	if upgraded:
+		new_p.damage += upgraded_damage
+		new_p.get_node("Sprite").texture = upgraded_projectile_sprite
+	$AnimationPlayer.current_animation = "shoot"
+	get_parent().add_child(new_p)
 	new_p.global_position = global_position
 	new_p.target = enemy
-	get_parent().add_child(new_p)
 	var dir = (enemy.global_position - global_position).normalized()
-	dir = acos(dir.x) *  -1 if dir.y < 0 else acos(dir.x) #https://godotengine.org/qa/90713/how-to-make-object-point-towards-another-2d
-	rotation_degrees = (rad2deg(dir))                 #very easy to implement! :)
-	$AnimationPlayer.current_animation = "shoot"
+	new_p.global_position += dir * offset
+	dir = acos(dir.x) *  -1 if dir.y < 0 else acos(dir.x) #https://godotengine.org/qa/90713/how-to-make-object-point-towards-another-2d, thank you!
+	rotation_degrees = (rad2deg(dir))   
+	new_p.rotation_degrees = rotation_degrees
+	new_p.start()
 
 func area_exited(area: Area2D):
 	target_queue.remove(target_queue.find(area))

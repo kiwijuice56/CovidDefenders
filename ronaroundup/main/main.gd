@@ -1,6 +1,6 @@
 extends Node2D
 
-var cash := 80 setget set_cash
+var cash := 60 setget set_cash
 var life := 100 setget set_life
 
 export var wave_delay := 3
@@ -25,24 +25,27 @@ func set_wave(new_wave: int):
 func set_cash(new_cash):
 	cash = new_cash
 #this is pretty badly hard coded, but in a rush :(!
-	game_ui.set_cash([40, 90, 130], cash)
+	game_ui.set_cash([40, 60, 130], cash)
 
 func set_life(new_life):
+	if new_life < life:
+		sound.play_sound(sound.hurt)
 	life = new_life
 	game_ui.set_life(life)
-	sound.play_sound(sound.hurt)
 	if life <= 0:
 		pass #death
 
 func _input(event):
 	if Input.is_action_just_released("ui_accept"):
-		emit_signal("mouse_clicked")
+		emit_signal("mouse_clicked", false)
 
 func select_tower(tower):
 	if is_placing:
 		return
 	game_ui.select_tower_action(tower)
 	var action = yield(game_ui, "action_selected")
+	if not tower:
+		return
 	match action:
 		"sell":
 			self.cash += int(tower.cost/2)
@@ -61,7 +64,10 @@ func place_tower(i):
 	var new_tower = towers[i].instance()
 	$Towers.add_child(new_tower)
 	new_tower.get_node("Button").disabled = true
-	yield(self, "mouse_clicked")
+	var cancel = yield(self, "mouse_clicked")
+	if cancel:
+		emit_signal("tower_chosen")
+		return
 	new_tower.set_process(false)
 	if new_tower.in_path == true:
 		new_tower.queue_free()
@@ -79,20 +85,24 @@ func place_tower(i):
 	new_tower.selected()
 
 func next_map():
-	self.cash = cash
-	self.map += 1
+	$Transition/AnimationPlayer.current_animation = "in"
+	yield($Transition/AnimationPlayer, "animation_finished")
+	map += 1
 	for tower in $Towers.get_children():
 		$Towers.call_deferred("remove_child", tower)
 		call_deferred("queue_free", tower)
-		#ower.queue_free()
-	remove_child(get_child(0)) #remove current map
+	var current_map = get_child(0)
+	remove_child(current_map) #remove current map
+	current_map.queue_free()
 	var new_map = maps[map].instance()
 	call_deferred("add_child", new_map)
 	call_deferred("move_child", new_map, 0)
-	#move_child(new_map, 0)
-	self.cash = 80
+	game_ui.reset()
+	emit_signal("mouse_clicked", true)
+	self.cash = 60
 	self.wave = -1
 	new_wave()
+	$Transition/AnimationPlayer.current_animation = "out"
 
 func new_wave():
 	$Timer.start(wave_delay)
@@ -104,4 +114,5 @@ func start_game():
 	next_map()
 
 func _ready():
+	self.life = 100
 	start_game()

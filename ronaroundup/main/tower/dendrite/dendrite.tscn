@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://main/tower/Tower.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main/projectile/dendrite/Acid.tscn" type="PackedScene" id=2]
+[ext_resource path="res://main/tower/dendrite/dendrite.png" type="Texture" id=3]
+[ext_resource path="res://main/tower/dendrite/upgraded_dendrite.png" type="Texture" id=4]
+[ext_resource path="res://main/projectile/dendrite/upgraded_acid.png" type="Texture" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "shoot"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 0 ]
+}
+
+[node name="Dendrite " instance=ExtResource( 1 )]
+upgraded_projectile_sprite = ExtResource( 5 )
+upgraded_sprite = ExtResource( 4 )
+cost = 90
+projectile = ExtResource( 2 )
+attack_delay = 2.2
+upgrade_cost = 50
+upgraded_delay = 1.5
+upgraded_damage = 2
+upgraded_name = "Super Dendrite"
+offset = 6
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 3 )
+vframes = 2
+hframes = 2
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( 0.140308, -0.140306 )
+
+[node name="AnimationPlayer" parent="." index="6"]
+playback_speed = 2.0
+anims/shoot = SubResource( 1 )

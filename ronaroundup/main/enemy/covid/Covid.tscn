@@ -4,7 +4,7 @@
 [ext_resource path="res://main/enemy/covid/covid.png" type="Texture" id=2]
 
 [node name="Covid19" instance=ExtResource( 1 )]
-drop = 5
+drop = 3
 speed = 25.0
 
 [node name="Sprite" parent="." index="0"]
