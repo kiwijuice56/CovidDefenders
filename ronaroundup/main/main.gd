@@ -1,6 +1,6 @@
 extends Node2D
 
-var cash := 50 setget set_cash
+var cash := 40 setget set_cash
 var life := 100 setget set_life
 
 export var wave_delay := 3
@@ -16,6 +16,7 @@ signal mouse_clicked
 signal tower_chosen
 
 onready var game_ui := $GameUI
+onready var sound := $SoundEffect
 
 func set_wave(new_wave: int):
 	wave = new_wave
@@ -28,6 +29,7 @@ func set_cash(new_cash):
 func set_life(new_life):
 	life = new_life
 	game_ui.set_life(life)
+	sound.play_sound(sound.hurt)
 	if life <= 0:
 		pass #death
 

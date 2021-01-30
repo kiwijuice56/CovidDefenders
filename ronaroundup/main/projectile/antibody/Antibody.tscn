@@ -4,7 +4,8 @@
 [ext_resource path="res://main/projectile/antibody/antibody.png" type="Texture" id=2]
 
 [node name="Antibody" instance=ExtResource( 1 )]
-speed = 20
+damage = 2
+speed = 25
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )

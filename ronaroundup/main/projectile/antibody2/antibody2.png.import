@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/antibody2.png-0e6f01e8fee57e0a712f82315e03a36c.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://main/projectile/antibody2/antibody2.png"
+dest_files=[ "res://.import/antibody2.png-0e6f01e8fee57e0a712f82315e03a36c.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

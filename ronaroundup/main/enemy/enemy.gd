@@ -5,13 +5,19 @@ export var health := 5 setget set_health
 export var speed := .5
 export var damage := 3
 var path := []
+var dying := false
 
 onready var main = get_tree().get_root().get_child(0)
 
 func set_health(new_health):
+	if dying: return
 	health = new_health
+	$AnimationPlayer.current_animation = "hurt"
 	if health <= 0:
+		dying = true
 		main.cash += drop
+		$AnimationPlayer.current_animation = "die"
+		yield($AnimationPlayer, "animation_finished")
 		get_parent().remove_child(self)
 		queue_free()
 

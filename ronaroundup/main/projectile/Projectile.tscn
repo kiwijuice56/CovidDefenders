@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://main/projectile/projectile.gd" type="Script" id=1]
+[ext_resource path="res://main/projectile/explosion/Explosion.tscn" type="PackedScene" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3.5, 3 )
@@ -9,8 +10,10 @@ extents = Vector2( 3.5, 3 )
 collision_layer = 4
 collision_mask = 2
 script = ExtResource( 1 )
+explosion = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.5, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

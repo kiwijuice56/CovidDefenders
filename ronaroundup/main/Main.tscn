@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://main/ui/game/game_ui_theme.tres" type="Theme" id=1]
 [ext_resource path="res://main/main.gd" type="Script" id=2]
@@ -9,11 +9,16 @@
 [ext_resource path="res://main/ui/game/sell.png" type="Texture" id=7]
 [ext_resource path="res://main/ui/game/upgrade.png" type="Texture" id=8]
 [ext_resource path="res://main/map/ranch/Ranch.tscn" type="PackedScene" id=9]
+[ext_resource path="res://main/tower/tcell/TCell.tscn" type="PackedScene" id=10]
+[ext_resource path="res://main/tower/macrophage/Macrophage.tscn" type="PackedScene" id=11]
+[ext_resource path="res://main/sound/sound_effect.gd" type="Script" id=12]
+[ext_resource path="res://main/sound/hurt.wav" type="AudioStream" id=13]
+[ext_resource path="res://main/sound/music.ogg" type="AudioStream" id=14]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 2 )
 maps = [ ExtResource( 9 ) ]
-towers = [ ExtResource( 3 ) ]
+towers = [ ExtResource( 3 ), ExtResource( 10 ), ExtResource( 11 ) ]
 
 [node name="Player" type="Node" parent="."]
 
@@ -81,20 +86,22 @@ size_flags_horizontal = 10
 action_mode = 0
 texture_normal = ExtResource( 5 )
 
-[node name="BCell2" type="TextureButton" parent="GameUI/MarginContainer/HBoxContainer/Towers/TButtons"]
+[node name="TCell" type="TextureButton" parent="GameUI/MarginContainer/HBoxContainer/Towers/TButtons"]
 margin_left = 29.0
 margin_top = 26.0
 margin_right = 51.0
 margin_bottom = 48.0
 size_flags_horizontal = 10
+action_mode = 0
 texture_normal = ExtResource( 5 )
 
-[node name="BCell3" type="TextureButton" parent="GameUI/MarginContainer/HBoxContainer/Towers/TButtons"]
+[node name="Macrophage" type="TextureButton" parent="GameUI/MarginContainer/HBoxContainer/Towers/TButtons"]
 margin_left = 29.0
 margin_top = 52.0
 margin_right = 51.0
 margin_bottom = 74.0
 size_flags_horizontal = 10
+action_mode = 0
 texture_normal = ExtResource( 5 )
 
 [node name="Name" type="Label" parent="GameUI/MarginContainer/HBoxContainer/Towers"]
@@ -131,3 +138,11 @@ texture_normal = ExtResource( 7 )
 [node name="Towers" type="Node" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+autoplay = true
+
+[node name="SoundEffect" type="AudioStreamPlayer" parent="."]
+script = ExtResource( 12 )
+hurt = ExtResource( 13 )

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://main/projectile/Projectile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main/projectile/acid/acid.png" type="Texture" id=2]
+
+[node name="Acid" instance=ExtResource( 1 )]
+damage = 5
+speed = 50
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )
