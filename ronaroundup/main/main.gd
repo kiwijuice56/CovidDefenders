@@ -1,6 +1,6 @@
 extends Node2D
 
-var cash := 40 setget set_cash
+var cash := 80 setget set_cash
 var life := 100 setget set_life
 
 export var wave_delay := 3
@@ -24,7 +24,8 @@ func set_wave(new_wave: int):
 
 func set_cash(new_cash):
 	cash = new_cash
-	game_ui.set_cash(cash)
+#this is pretty badly hard coded, but in a rush :(!
+	game_ui.set_cash([40, 90, 130], cash)
 
 func set_life(new_life):
 	life = new_life
@@ -45,9 +46,12 @@ func select_tower(tower):
 	match action:
 		"sell":
 			self.cash += int(tower.cost/2)
+			$Towers.remove_child(tower)
 			tower.queue_free()
 		"upgrade":
-			pass
+			if not tower.upgraded:
+				tower.upgrade()
+				self.cash -= tower.upgrade_cost
 		"":
 			pass
 	tower.deselected()
@@ -58,16 +62,16 @@ func place_tower(i):
 	$Towers.add_child(new_tower)
 	new_tower.get_node("Button").disabled = true
 	yield(self, "mouse_clicked")
+	new_tower.set_process(false)
 	if new_tower.in_path == true:
 		new_tower.queue_free()
-		place_tower(i)
+		emit_signal("tower_chosen")
 		return
-	if new_tower.cost >= cash:
+	if new_tower.cost > cash:
 		emit_signal("tower_chosen")
 		new_tower.queue_free()
 		return
 	self.cash -= new_tower.cost
-	new_tower.set_process(false)
 	new_tower.timer.start(new_tower.attack_delay)
 	emit_signal("tower_chosen")
 	is_placing = false
@@ -75,11 +79,18 @@ func place_tower(i):
 	new_tower.selected()
 
 func next_map():
+	self.cash = cash
 	self.map += 1
+	for tower in $Towers.get_children():
+		$Towers.call_deferred("remove_child", tower)
+		call_deferred("queue_free", tower)
+		#ower.queue_free()
 	remove_child(get_child(0)) #remove current map
 	var new_map = maps[map].instance()
-	add_child(new_map)
-	move_child(new_map, 0)
+	call_deferred("add_child", new_map)
+	call_deferred("move_child", new_map, 0)
+	#move_child(new_map, 0)
+	self.cash = 80
 	self.wave = -1
 	new_wave()
 

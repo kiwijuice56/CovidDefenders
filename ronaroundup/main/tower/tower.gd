@@ -1,11 +1,15 @@
 extends Area2D
 
+export var upgraded_sprite: Resource
 export var cost:= 10
 export var projectile: PackedScene 
 export var attack_delay := 0.5
+export var upgrade_cost := 20
+export var upgraded_delay := 0.4
+export var upgraded_damage := 1
+export var upgraded_name := ""
 var target_queue:= []
-
-
+var upgraded := false
 var in_path := false setget set_in_path
 onready var main = get_tree().get_root().get_child(0)
 onready var timer := $Timer
@@ -28,9 +32,15 @@ func _ready():
 	$Button.connect("pressed", self, "selected")
 	name = name + str(get_index())
 
+func upgrade():
+	upgraded = true
+	$Sprite.texture = upgraded_sprite
+	cost += upgrade_cost
+	attack_delay = upgraded_delay
+	name = upgraded_name + str(get_index())
+
 func deselected():
 	$Button.modulate = Color(0, 0, 0, 0)
-
 func selected():
 	$Button.modulate = Color(255, 255, 255, 125)
 	main.select_tower(self)
@@ -53,9 +63,14 @@ func shoot():
 		return
 	var enemy = target_queue[0]
 	var new_p = projectile.instance()
+	if upgraded: new_p.damage += upgraded_damage
 	new_p.global_position = global_position
 	new_p.target = enemy
 	get_parent().add_child(new_p)
+	var dir = (enemy.global_position - global_position).normalized()
+	dir = acos(dir.x) *  -1 if dir.y < 0 else acos(dir.x) #https://godotengine.org/qa/90713/how-to-make-object-point-towards-another-2d
+	rotation_degrees = (rad2deg(dir))                 #very easy to implement! :)
+	$AnimationPlayer.current_animation = "shoot"
 
 func area_exited(area: Area2D):
 	target_queue.remove(target_queue.find(area))

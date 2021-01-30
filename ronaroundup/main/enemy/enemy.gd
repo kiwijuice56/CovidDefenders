@@ -10,9 +10,13 @@ var dying := false
 onready var main = get_tree().get_root().get_child(0)
 
 func set_health(new_health):
+	if health < new_health:
+		health = new_health
+		return
 	if dying: return
 	health = new_health
 	$AnimationPlayer.current_animation = "hurt"
+	$AudioStreamPlayer2D.playing = true
 	if health <= 0:
 		dying = true
 		main.cash += drop

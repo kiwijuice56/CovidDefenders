@@ -7,9 +7,12 @@ export var speed:= 0
 var target
 var vel := Vector2()
 
+func delete():
+	queue_free()
+
 func _ready():
 	connect("area_entered", self, "area_entered")
-	$VisibilityNotifier2D.connect("screen_exited", self, "queue_free")
+	$VisibilityNotifier2D.connect("screen_exited", self, "delete")
 	vel = (target.global_position - global_position).normalized() * speed
 
 func area_entered(area: Area2D):
@@ -25,5 +28,7 @@ func area_entered(area: Area2D):
 
 func _physics_process(delta):
 	if target and not pierce:
-		 vel = (target.global_position - global_position).normalized() * speed
-	global_position += vel * delta
+		 vel = (target.global_position - global_position).normalized()
+	global_position += vel * speed * delta
+	var dir = acos(vel.x) *  -1 if vel.y < 0 else acos(vel.x) #https://godotengine.org/qa/90713/how-to-make-object-point-towards-another-2d
+	rotation_degrees = (rad2deg(dir))                 #very easy to implement! :)

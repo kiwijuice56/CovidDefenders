@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://main/ui/game/game_ui_theme.tres" type="Theme" id=1]
 [ext_resource path="res://main/main.gd" type="Script" id=2]
@@ -14,10 +14,13 @@
 [ext_resource path="res://main/sound/sound_effect.gd" type="Script" id=12]
 [ext_resource path="res://main/sound/hurt.wav" type="AudioStream" id=13]
 [ext_resource path="res://main/sound/music.ogg" type="AudioStream" id=14]
+[ext_resource path="res://main/map/ranch/Ranch2.tscn" type="PackedScene" id=15]
+[ext_resource path="res://main/ui/game/tower_buttons/disabled1.png" type="Texture" id=16]
+[ext_resource path="res://main/ui/game/disabled.png" type="Texture" id=17]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 2 )
-maps = [ ExtResource( 9 ) ]
+maps = [ ExtResource( 9 ), ExtResource( 15 ) ]
 towers = [ ExtResource( 3 ), ExtResource( 10 ), ExtResource( 11 ) ]
 
 [node name="Player" type="Node" parent="."]
@@ -85,6 +88,7 @@ margin_bottom = 22.0
 size_flags_horizontal = 10
 action_mode = 0
 texture_normal = ExtResource( 5 )
+texture_disabled = ExtResource( 16 )
 
 [node name="TCell" type="TextureButton" parent="GameUI/MarginContainer/HBoxContainer/Towers/TButtons"]
 margin_left = 29.0
@@ -94,6 +98,7 @@ margin_bottom = 48.0
 size_flags_horizontal = 10
 action_mode = 0
 texture_normal = ExtResource( 5 )
+texture_disabled = ExtResource( 16 )
 
 [node name="Macrophage" type="TextureButton" parent="GameUI/MarginContainer/HBoxContainer/Towers/TButtons"]
 margin_left = 29.0
@@ -103,6 +108,7 @@ margin_bottom = 74.0
 size_flags_horizontal = 10
 action_mode = 0
 texture_normal = ExtResource( 5 )
+texture_disabled = ExtResource( 16 )
 
 [node name="Name" type="Label" parent="GameUI/MarginContainer/HBoxContainer/Towers"]
 margin_top = 78.0
@@ -124,6 +130,7 @@ margin_right = 22.0
 margin_bottom = 130.0
 size_flags_horizontal = 10
 texture_normal = ExtResource( 8 )
+texture_disabled = ExtResource( 17 )
 
 [node name="Sell" type="TextureButton" parent="GameUI/MarginContainer/HBoxContainer/Towers"]
 visible = false
@@ -141,8 +148,10 @@ texture_normal = ExtResource( 7 )
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )
+volume_db = -4.691
 autoplay = true
 
 [node name="SoundEffect" type="AudioStreamPlayer" parent="."]
+volume_db = -3.046
 script = ExtResource( 12 )
 hurt = ExtResource( 13 )
