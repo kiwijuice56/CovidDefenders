@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://main/ui/game/game_ui_theme.tres" type="Theme" id=1]
+[ext_resource path="res://main/main.gd" type="Script" id=2]
+[ext_resource path="res://main/tower/bcell/Bcell.tscn" type="PackedScene" id=3]
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 2 )
+maps = [ "res://main/map/ranch/Ranch.tscn" ]
+
+[node name="Player" type="Node" parent="."]
+
+[node name="GameUI" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="GameUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+custom_constants/margin_right = 4
+custom_constants/margin_top = 4
+custom_constants/margin_left = 4
+custom_constants/margin_bottom = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameUI/MarginContainer"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 252.0
+margin_bottom = 188.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameUI/MarginContainer/HBoxContainer"]
+margin_right = 40.0
+margin_bottom = 184.0
+
+[node name="Life" type="Label" parent="GameUI/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_right = 40.0
+margin_bottom = 11.0
+text = "Life: 0"
+
+[node name="Cash" type="Label" parent="GameUI/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 15.0
+margin_right = 40.0
+margin_bottom = 26.0
+text = "Cash: 0"
+
+[node name="Score" type="Label" parent="GameUI/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 30.0
+margin_right = 40.0
+margin_bottom = 41.0
+text = "Score: 0"
+
+[node name="Tower" parent="." instance=ExtResource( 3 )]
+position = Vector2( -55.275, 63.3913 )
