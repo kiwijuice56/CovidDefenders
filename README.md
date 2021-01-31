@@ -5,7 +5,8 @@
 Covid-19 is a very serious problem that has taken millions of lives around the world. This program is in no way attempting to disrespect or trivialize these matters. It was made in the hopes that people could have fun and for us to demonstrate computer science knowledge in the 'Rona Round UP! hackathon. Learn more about Covid-19 here: https://www.cdc.gov/coronavirus/2019-ncov/index.html.
 
 # Covid Defenders
-https://www.youtube.com/watch?v=fPNAlO9DQkI
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/fPNAlO9DQkI/0.jpg)](https://www.youtube.com/watch?v=fPNAlO9DQkI)
+
 Do you ever look at someone and wonder, what is going on inside their lungs? Probably not, but regardless Covid Defenders lets you fend off Covid-19 in a tower defense game! Your main goal is to strategically place different immune system cells around a map and fend off waves of Covid from reaching the end of the path. Like other tower defense games, these cells will automatically attack covid using projectiles.
 
 Every virus that passes your goal decreases your % of healthy cells, so its imperative that you stay above 0%. Losing your health will result in a game over. Your health is denoted by the % after the heart symbol on the top right.
