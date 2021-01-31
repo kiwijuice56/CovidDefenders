@@ -1,0 +1,166 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://main/ui/game/game_ui.gd" type="Script" id=1]
+[ext_resource path="res://main/ui/game/game_ui_theme.tres" type="Theme" id=2]
+[ext_resource path="res://main/ui/game/tower_buttons/disabled1.png" type="Texture" id=3]
+[ext_resource path="res://main/ui/game/tower_buttons/tower_button_holder.gd" type="Script" id=4]
+[ext_resource path="res://main/ui/game/sell.png" type="Texture" id=5]
+[ext_resource path="res://main/ui/game/disabled.png" type="Texture" id=6]
+[ext_resource path="res://main/ui/game/tower_buttons/button1.png" type="Texture" id=7]
+[ext_resource path="res://main/ui/game/upgrade.png" type="Texture" id=8]
+[ext_resource path="res://main/ui/game/tower_buttons/button2.png" type="Texture" id=9]
+[ext_resource path="res://main/ui/game/tower_buttons/disabled2.png" type="Texture" id=10]
+[ext_resource path="res://main/ui/game/tower_buttons/button3.png" type="Texture" id=11]
+[ext_resource path="res://main/ui/game/tower_buttons/disabled3.png" type="Texture" id=12]
+[ext_resource path="res://main/ui/game/rna.png" type="Texture" id=13]
+[ext_resource path="res://main/ui/game/life.png" type="Texture" id=14]
+
+[node name="GameUI" type="CanvasLayer"]
+layer = 0
+script = ExtResource( 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+custom_constants/margin_right = 4
+custom_constants/margin_top = 4
+custom_constants/margin_left = 4
+custom_constants/margin_bottom = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 258.0
+margin_top = 4.0
+margin_right = 337.0
+margin_bottom = 160.0
+size_flags_horizontal = 10
+size_flags_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_left = 9.0
+margin_right = 79.0
+margin_bottom = 74.0
+size_flags_horizontal = 10
+size_flags_vertical = 3
+custom_constants/separation = 8
+
+[node name="Towers" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 22.0
+margin_bottom = 74.0
+size_flags_horizontal = 10
+size_flags_vertical = 2
+script = ExtResource( 4 )
+
+[node name="TButtons" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Towers"]
+margin_right = 22.0
+margin_bottom = 74.0
+
+[node name="BCell" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer/Towers/TButtons"]
+margin_right = 22.0
+margin_bottom = 22.0
+size_flags_horizontal = 10
+action_mode = 0
+texture_normal = ExtResource( 7 )
+texture_disabled = ExtResource( 3 )
+
+[node name="Macrophage" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer/Towers/TButtons"]
+margin_top = 26.0
+margin_right = 22.0
+margin_bottom = 48.0
+size_flags_horizontal = 10
+action_mode = 0
+texture_normal = ExtResource( 9 )
+texture_disabled = ExtResource( 10 )
+
+[node name="Dendrite" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer/Towers/TButtons"]
+margin_top = 52.0
+margin_right = 22.0
+margin_bottom = 74.0
+size_flags_horizontal = 10
+action_mode = 0
+texture_normal = ExtResource( 11 )
+texture_disabled = ExtResource( 12 )
+
+[node name="Info" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 30.0
+margin_right = 70.0
+margin_bottom = 74.0
+size_flags_horizontal = 10
+
+[node name="Life" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Info"]
+margin_right = 40.0
+margin_bottom = 15.0
+
+[node name="Life" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Info/Life"]
+margin_top = 2.0
+margin_right = 24.0
+margin_bottom = 13.0
+text = "100%"
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/Info/Life"]
+margin_left = 28.0
+margin_right = 40.0
+margin_bottom = 15.0
+texture = ExtResource( 14 )
+
+[node name="Cash" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Info"]
+margin_top = 19.0
+margin_right = 40.0
+margin_bottom = 34.0
+
+[node name="Cash" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Info/Cash"]
+margin_top = 2.0
+margin_right = 24.0
+margin_bottom = 13.0
+text = "0000"
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/Info/Cash"]
+margin_left = 28.0
+margin_right = 40.0
+margin_bottom = 15.0
+texture = ExtResource( 13 )
+
+[node name="Wave" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Info"]
+margin_top = 38.0
+margin_right = 40.0
+margin_bottom = 49.0
+text = "Wave: 1"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 78.0
+margin_right = 79.0
+margin_bottom = 156.0
+
+[node name="Name" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+margin_right = 79.0
+margin_bottom = 11.0
+text = "dfsdfsdfsdfsdf"
+align = 2
+
+[node name="Value" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+margin_top = 15.0
+margin_right = 79.0
+margin_bottom = 26.0
+align = 2
+
+[node name="Upgrade" type="TextureButton" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+margin_left = 57.0
+margin_top = 30.0
+margin_right = 79.0
+margin_bottom = 52.0
+size_flags_horizontal = 10
+texture_normal = ExtResource( 8 )
+texture_disabled = ExtResource( 6 )
+
+[node name="Sell" type="TextureButton" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+margin_left = 57.0
+margin_top = 56.0
+margin_right = 79.0
+margin_bottom = 78.0
+size_flags_horizontal = 10
+texture_normal = ExtResource( 5 )
+
+[node name="Tween" type="Tween" parent="."]
