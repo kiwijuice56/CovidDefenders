@@ -2,25 +2,35 @@
 #### Eric Alfaro & Zhongyou Wu 
 
 ### Disclaimer:
-Covid-19 is a very serious problem that has taken millions of lives around the world.
-This program is in no way attempting to disrespect or trivialize these matters.
-It was made in the hopes that people could have fun and for us to demonstrate computer science knowledge in the 'Rona Round UP! hackathon.
-Learn more about Covid-19 here: https://www.cdc.gov/coronavirus/2019-ncov/index.html.
+Covid-19 is a very serious problem that has taken millions of lives around the world. This program is in no way attempting to disrespect or trivialize these matters. It was made in the hopes that people could have fun and for us to demonstrate computer science knowledge in the 'Rona Round UP! hackathon. Learn more about Covid-19 here: https://www.cdc.gov/coronavirus/2019-ncov/index.html.
 
 # Covid Defenders
-Do you ever look at someone and wonder, what is going on inside their lungs? Probably not, but regardless Covid Defenders lets you fend off Covid-19 in a tower defense game!
-Your main goal is to strategically place body cells around a map and fend off waves of Covid from reaching the end of the path.
+https://www.youtube.com/watch?v=fPNAlO9DQkI
+Do you ever look at someone and wonder, what is going on inside their lungs? Probably not, but regardless Covid Defenders lets you fend off Covid-19 in a tower defense game! Your main goal is to strategically place different immune system cells around a map and fend off waves of Covid from reaching the end of the path. Like other tower defense games, these cells will automatically attack covid using projectiles.
 
-Every virus that passes your goal decreases your % of healthy cells, so its imperative that you stay above 0%.
-Your best defense is some of your immune cells: The B cell, Macrophage, and Dendrite.
-Drag one of the cells from the top right of your screen and drop it on the map!
+Every virus that passes your goal decreases your % of healthy cells, so its imperative that you stay above 0%. Losing your health will result in a game over. Your health is denoted by the % after the heart symbol on the top right.
 
-Each type of cell is unique and can even be upgraded!
-Click on a placed cell to select it and click on the arrow button on the bottom right to upgrade it.
-You must think wisely, because you can only place and upgrade cells if you have the required RNA.
-You can get more RNA as you defeat viruses and by getting rid of a body cell by clicking on the $ after selecting it.
-The value shown under the name is what you will get in return (half of what you've spent on that cell).
+Waves of covid will naturally pass the map. You can never be sure how many waves there are, so be on guard! Once all waves are over, the next map will appear (3 maps in total).
 
+Your best defense is some of your immune cells: The B cell, Macrophage, and Dendrite. Drag one of the cells from the top right of your screen and drop it on the map! Each type of cell is unique and can even be upgraded! Click on a placed cell to select it and click on the arrow button on the bottom right to upgrade it.
+
+You must think wisely, because you can only place and upgrade cells if you have the required RNA. Your RNA is denoted by the numbers in front of the blue squiggly symbol at the top right. If you can't afford a tower's upgrade or cost, the button will be darker and unpressable (check the exact prices in the table below). You can get more RNA as you defeat viruses or by recycling a cell by clicking on the $ after selecting it. The value shown under the name is what you will get in return (half of what you've spent on that cell).
+
+Launching the game is simple. In the "release" folder, choose the file that matches your OS name and execute it.
+While the Linux and MaxOS versions are available, I do not have the resources to test out either version.
+I trust that you know how those executables work more than I do! Sorry :(
+
+OS | File
+--- | --- |
+Windows | win.exe
+MacOS | mac.zip
+Linux | linux.x86_64
+
+If attempting to launch from the release folder doesn't work, you can install Godot Engine (https://godotengine.org/).
+Scan the project folder once installed onto your system, and the project should load up.
+
+Also note that your program might run with an empty command window.
+This is unfortunately related to some bug I can't seem to fix for now.. You do not need to interact with this window, just don't close it while you're playing or the game will close too.
 
 ## The Cells
 ### B Cell
@@ -105,3 +115,6 @@ Item | Link | Author
 Hurt Sound | https://freesound.org/people/ReadeOnly/sounds/186927// | ReadeOnly (freesound username)
 Pop Sound | https://freesound.org/people/InspectorJ/sounds/484268/ | InspectorJ (freesound username)
 Music | https://www.youtube.com/watch?v=DpxZ5PHa6xo | Jacob Lizotte
+Font | https://www.dafont.com/minecraftia.font | Andrew Tyler
+
+Email alfaroeric127@gmail.com if you have any comments, questions, or concerns!
