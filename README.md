@@ -16,8 +16,8 @@ Your best defense is some of your immune cells: The B cell, Macrophage, and Dend
 
 You must think wisely, because you can only place and upgrade cells if you have the required RNA. Your RNA is denoted by the numbers in front of the blue squiggly symbol at the top right. If you can't afford a tower's upgrade or cost, the button will be darker and unpressable (check the exact prices in the table below). You can get more RNA as you defeat viruses or by recycling a cell by clicking on the $ after selecting it. The value shown under the name is what you will get in return (half of what you've spent on that cell).
 
-Launching the game is simple. In the "release" folder, choose the file that matches your OS name and execute it. Make sure you have the matching ".pck" file also installed in the same directory as the game executable.
-While the Linux and MaxOS versions are available, I do not have the resources to test out either version.
+Launching the game is simple. In the "release" folder, choose the file that matches your OS name and execute it. Make sure you have the matching ".pck" file also installed in the same directory as the game executable (MacOS has no .pck file).
+While the Linux and MacOS versions are available, I do not have the resources to test out either version.
 I trust that you know how those executables work more than I do! Sorry :(
 
 OS | File
@@ -27,7 +27,7 @@ MacOS | mac.zip
 Linux | linux.x86_64
 
 If attempting to launch from the release folder doesn't work, you can install Godot Engine (https://godotengine.org/).
-Scan the project folder once installed onto your system, and the project should load up.
+Scan the project folder within Godot once installed onto your system, and the project should load up.
 
 Also note that your program might run with an empty command window.
 This is unfortunately related to some bug I can't seem to fix for now.. You do not need to interact with this window, just don't close it while you're playing or the game will close too.
