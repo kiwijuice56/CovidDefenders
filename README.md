@@ -75,7 +75,7 @@ RNA Drop | 3
 ### Covid-20 (Purple)
 Stat | Value
  --- | --- 
-Health | 5
+Health | 7
 Damage | 4
 Speed | Medium
 RNA Drop | 4
