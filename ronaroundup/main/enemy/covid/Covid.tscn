@@ -5,6 +5,7 @@
 
 [node name="Covid19" instance=ExtResource( 1 )]
 drop = 3
+health = 5
 speed = 25.0
 
 [node name="Sprite" parent="." index="0"]

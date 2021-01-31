@@ -1,5 +1,6 @@
 extends Area2D
 
+export var attacks_last := false
 export var upgraded_projectile_sprite: Resource
 export var upgraded_sprite: Resource
 export var cost:= 10
@@ -63,7 +64,7 @@ func shoot():
 	timer.start(attack_delay)
 	if len(target_queue) == 0:
 		return
-	var enemy = target_queue[0]
+	var enemy = target_queue[-1] if attacks_last else target_queue[0]
 	var new_p = projectile.instance()
 	if upgraded:
 		new_p.damage += upgraded_damage

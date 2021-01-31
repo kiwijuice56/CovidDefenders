@@ -1,9 +1,13 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://main/ui/GameUI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/main.gd" type="Script" id=2]
 [ext_resource path="res://main/tower/bcell/Bcell.tscn" type="PackedScene" id=3]
 [ext_resource path="res://main/ui/transition/transition.png" type="Texture" id=4]
+[ext_resource path="res://main/map/ranch/Ranch3.tscn" type="PackedScene" id=5]
+[ext_resource path="res://main/ui/intro/Intro.tscn" type="PackedScene" id=6]
+[ext_resource path="res://main/ui/death/Death.tscn" type="PackedScene" id=7]
+[ext_resource path="res://main/ui/Win/Win.tscn" type="PackedScene" id=8]
 [ext_resource path="res://main/map/ranch/Ranch.tscn" type="PackedScene" id=9]
 [ext_resource path="res://main/tower/macrophage/Macrophage.tscn" type="PackedScene" id=10]
 [ext_resource path="res://main/tower/dendrite/dendrite.tscn" type="PackedScene" id=11]
@@ -70,10 +74,12 @@ tracks/1/keys = {
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 2 )
-maps = [ ExtResource( 9 ), ExtResource( 15 ) ]
+win = ExtResource( 8 )
+death = ExtResource( 7 )
+maps = [ ExtResource( 9 ), ExtResource( 15 ), ExtResource( 5 ) ]
 towers = [ ExtResource( 3 ), ExtResource( 10 ), ExtResource( 11 ) ]
 
-[node name="Player" type="Node" parent="."]
+[node name="Map" type="Node" parent="."]
 
 [node name="GameUI" parent="." instance=ExtResource( 1 )]
 
@@ -83,13 +89,15 @@ towers = [ ExtResource( 3 ), ExtResource( 10 ), ExtResource( 11 ) ]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )
-volume_db = -4.691
+volume_db = -5.285
 autoplay = true
 
 [node name="SoundEffect" type="AudioStreamPlayer" parent="."]
 volume_db = -3.046
 script = ExtResource( 12 )
 hurt = ExtResource( 13 )
+
+[node name="Intro" parent="." instance=ExtResource( 6 )]
 
 [node name="Transition" type="CanvasLayer" parent="."]
 

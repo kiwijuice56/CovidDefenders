@@ -23,13 +23,14 @@ tracks/0/keys = {
 }
 
 [node name="Macrophage" instance=ExtResource( 1 )]
+attacks_last = true
 upgraded_projectile_sprite = ExtResource( 5 )
 upgraded_sprite = ExtResource( 4 )
 cost = 55
 projectile = ExtResource( 2 )
 attack_delay = 1.3
 upgrade_cost = 40
-upgraded_delay = 0.8
+upgraded_delay = 1.1
 upgraded_name = "Super Macrophage"
 offset = 6
 

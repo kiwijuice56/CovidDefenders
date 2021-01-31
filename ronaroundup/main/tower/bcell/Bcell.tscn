@@ -28,9 +28,9 @@ upgraded_sprite = ExtResource( 4 )
 cost = 40
 projectile = ExtResource( 3 )
 attack_delay = 0.8
-upgrade_cost = 45
-upgraded_delay = 0.6
-upgraded_name = "Memory Cell"
+upgrade_cost = 50
+upgraded_delay = 0.75
+upgraded_name = "Memory B Cell"
 offset = 5
 
 [node name="Sprite" parent="." index="0"]

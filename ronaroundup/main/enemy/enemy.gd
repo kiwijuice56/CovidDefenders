@@ -1,7 +1,7 @@
 extends Area2D
 
 export var drop := 10
-export var health := 5 setget set_health
+export var health := 0 setget set_health
 export var speed := .5
 export var damage := 3
 var path := []
@@ -28,7 +28,7 @@ func set_health(new_health):
 func at_point():
 	if len(path)-1 == 0:
 		set_physics_process(false)
-		main.life -= 3
+		main.life -= damage
 		get_parent().remove_child(self)
 		queue_free() #it escaped! decrease health
 	path.pop_front()

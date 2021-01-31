@@ -31,5 +31,7 @@ func area_entered(area: Area2D):
 
 func _physics_process(delta):
 	if target and track:
-		 vel = (target.global_position - global_position).normalized()
+		vel = (target.global_position - global_position).normalized()
+		var dir = acos(vel.x) *  -1 if vel.y < 0 else acos(vel.x) #https://godotengine.org/qa/90713/how-to-make-object-point-towards-another-2d, thank you!
+		rotation_degrees = (rad2deg(dir)) 
 	global_position += vel * speed * delta

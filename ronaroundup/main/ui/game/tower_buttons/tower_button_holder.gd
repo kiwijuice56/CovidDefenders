@@ -3,10 +3,10 @@ extends VBoxContainer
 onready var main := get_tree().get_root().get_child(0)
 
 func reset():
-	$Upgrade.visible = false
-	$Sell.visible = false
-	$Name.text = "Selected: ..."
-	$Value.text = ""
+	$"../../VBoxContainer/Upgrade".visible = false
+	$"../../VBoxContainer/Sell".visible = false
+	$"../../VBoxContainer/Name".text = ""
+	$"../../VBoxContainer/Value".text = ""
 	main.get_node("GameUI").action_chosen("")
 
 func _input(event):
@@ -21,14 +21,14 @@ func check_cash(prices: Array, cash):
 			$TButtons.get_child(i).disabled = false
 
 func select_tower(tower: Area2D):
-	$Name.text = "Selected: " + tower.name
-	$Value.text = "Value: " + str(int(tower.cost/2))
-	$Upgrade.visible = true
-	$Sell.visible = true
+	$"../../VBoxContainer/Name".text = tower.name
+	$"../../VBoxContainer/Value".text = "Value: " + str(int(tower.cost/2)) + " RNA"
+	$"../../VBoxContainer/Upgrade".visible = true
+	$"../../VBoxContainer/Sell".visible = true
 	if main.cash < tower.upgrade_cost:
-		$Upgrade.disabled = true
+		$"../../VBoxContainer/Upgrade".disabled = true
 	else:
-		$Upgrade.disabled = false
+		$"../../VBoxContainer/Upgrade".disabled = false
 
 func pressed(i: int):
 	visible = false
@@ -40,5 +40,5 @@ func _ready():
 	for i in range(len($TButtons.get_children())):
 		$TButtons.get_child(i).connect("pressed", self, "pressed", [i])
 		$TButtons.get_child(i).connect("pressed", main.get_node("GameUI"), "action_chosen", [""])
-	$Upgrade.connect("pressed", main.get_node("GameUI"), "action_chosen", ["upgrade"])
-	$Sell.connect("pressed", main.get_node("GameUI"), "action_chosen", ["sell"])
+	$"../../VBoxContainer/Upgrade".connect("pressed", main.get_node("GameUI"), "action_chosen", ["upgrade"])
+	$"../../VBoxContainer/Sell".connect("pressed", main.get_node("GameUI"), "action_chosen", ["sell"])

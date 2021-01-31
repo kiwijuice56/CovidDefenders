@@ -3,10 +3,14 @@ extends Node2D
 var cash := 60 setget set_cash
 var life := 100 setget set_life
 
+
+export var win: PackedScene
+export var death: PackedScene
 export var wave_delay := 3
 export(Array, PackedScene) var maps  := []
 export(Array, PackedScene) var towers := []
 
+var max_map := 3
 var map := -1
 var wave := -1 setget set_wave
 var is_placing := false
@@ -25,7 +29,7 @@ func set_wave(new_wave: int):
 func set_cash(new_cash):
 	cash = new_cash
 #this is pretty badly hard coded, but in a rush :(!
-	game_ui.set_cash([40, 60, 130], cash)
+	game_ui.set_cash([40, 55, 80], cash)
 
 func set_life(new_life):
 	if new_life < life:
@@ -33,7 +37,9 @@ func set_life(new_life):
 	life = new_life
 	game_ui.set_life(life)
 	if life <= 0:
-		pass #death
+		add_child(death.instance())
+		remove_child(get_child(0))
+		#get_tree().reload_current_scene() #https://godotengine.org/qa/6454/reload-current-scene thanks!
 
 func _input(event):
 	if Input.is_action_just_released("ui_accept"):
@@ -93,13 +99,16 @@ func next_map():
 		call_deferred("queue_free", tower)
 	var current_map = get_child(0)
 	remove_child(current_map) #remove current map
+	if map == max_map:
+		add_child(win.instance())
+		return
 	current_map.queue_free()
 	var new_map = maps[map].instance()
 	call_deferred("add_child", new_map)
 	call_deferred("move_child", new_map, 0)
 	game_ui.reset()
 	emit_signal("mouse_clicked", true)
-	self.cash = 60
+	self.cash = 70
 	self.wave = -1
 	new_wave()
 	$Transition/AnimationPlayer.current_animation = "out"
@@ -112,7 +121,8 @@ func new_wave():
 
 func start_game():
 	next_map()
+	yield($Transition/AnimationPlayer, "animation_finished")
+	$Intro.queue_free()
 
 func _ready():
 	self.life = 100
-	start_game()

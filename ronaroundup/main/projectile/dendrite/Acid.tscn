@@ -5,7 +5,7 @@
 
 [node name="Acid" instance=ExtResource( 1 )]
 track = true
-damage = 5
+damage = 9
 speed = 70
 
 [node name="Sprite" parent="." index="0"]
