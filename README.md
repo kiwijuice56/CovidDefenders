@@ -112,9 +112,10 @@ Windows 10, Linux, MacOS
 # Attributions
 Item | Link | Author
  --- | --- | ---
-Hurt Sound | https://freesound.org/people/ReadeOnly/sounds/186927// | ReadeOnly (freesound username)
+Hurt Sound | https://freesound.org/people/ReadeOnly/sounds/186927/ | ReadeOnly (freesound username)
 Pop Sound | https://freesound.org/people/InspectorJ/sounds/484268/ | InspectorJ (freesound username)
 Music | https://www.youtube.com/watch?v=DpxZ5PHa6xo | Jacob Lizotte
 Font | https://www.dafont.com/minecraftia.font | Andrew Tyler
+There is also few snippits of borrowed code! These are commented within the scripts.
 
 Email alfaroeric127@gmail.com if you have any comments, questions, or concerns!
