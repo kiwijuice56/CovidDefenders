@@ -6,7 +6,7 @@
 [node name="Antibody" instance=ExtResource( 1 )]
 track = true
 damage = 2
-speed = 27
+speed = 32
 
 [node name="Sprite" parent="." index="0"]
 rotation = -1.5708

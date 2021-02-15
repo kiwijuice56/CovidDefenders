@@ -1,6 +1,7 @@
 extends Area2D
 
 export var drop := 10
+export var slowed := false setget set_slowed
 export var health := 0 setget set_health
 export var speed := .5
 export var damage := 3
@@ -8,6 +9,13 @@ var path := []
 var dying := false
 
 onready var main = get_tree().get_root().get_child(0)
+
+func set_slowed(new_slowed):
+	slowed = true
+	$Timer.start(2)
+	yield($Timer, "timeout")
+	slowed = false
+	modulate = Color(1, 1, 1)
 
 func set_health(new_health):
 	if health < new_health:
@@ -35,4 +43,4 @@ func at_point():
 
 func _physics_process(delta):
 	var vel = (path[0].global_position - global_position).normalized() * speed * delta
-	global_position += vel
+	global_position += vel * 0.5 if slowed else vel

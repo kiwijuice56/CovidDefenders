@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://main/tower/Tower.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main/tower/neutrophil/neutrophil.png" type="Texture" id=2]
+[ext_resource path="res://main/projectile/goo/Goo.tscn" type="PackedScene" id=3]
+[ext_resource path="res://main/tower/neutrophil/upgraded_neutrophil.png" type="Texture" id=4]
+[ext_resource path="res://main/projectile/goo/upgraded_goo.png" type="Texture" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 25.0
+
+[sub_resource type="Animation" id=2]
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 2, 1, 0 ]
+}
+
+[node name="Neutrophil" instance=ExtResource( 1 )]
+z_index = 0
+rotates = false
+upgraded_projectile_sprite = ExtResource( 5 )
+upgraded_sprite = ExtResource( 4 )
+cost = 35
+projectile = ExtResource( 3 )
+attack_delay = 1.4
+upgrade_cost = 25
+upgraded_delay = 1.1
+upgraded_name = "Super Neutrophil"
+offset = 0
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )
+hframes = 4
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" parent="." index="6"]
+playback_speed = 2.0
+anims/shoot = SubResource( 2 )

@@ -1,6 +1,6 @@
 extends Node2D
 
-var cash := 60 setget set_cash
+var cash := 500 setget set_cash
 var life := 100 setget set_life
 
 
@@ -29,7 +29,7 @@ func set_wave(new_wave: int):
 func set_cash(new_cash):
 	cash = new_cash
 #this is pretty badly hard coded, but in a rush :(!
-	game_ui.set_cash([40, 55, 80], cash)
+	game_ui.set_cash([40, 55, 80, 35], cash)
 
 func set_life(new_life):
 	if new_life < life:
@@ -38,7 +38,7 @@ func set_life(new_life):
 	game_ui.set_life(life)
 	if life <= 0:
 		add_child(death.instance())
-		remove_child(get_child(0))
+		call_deferred("remove_child", get_child(0))
 		#get_tree().reload_current_scene() #https://godotengine.org/qa/6454/reload-current-scene thanks!
 
 func _input(event):
@@ -69,6 +69,7 @@ func place_tower(i):
 	is_placing = true
 	var new_tower = towers[i].instance()
 	$Towers.add_child(new_tower)
+	
 	new_tower.get_node("Button").disabled = true
 	var cancel = yield(self, "mouse_clicked")
 	if cancel:
@@ -78,17 +79,20 @@ func place_tower(i):
 	if new_tower.in_path == true:
 		new_tower.queue_free()
 		emit_signal("tower_chosen")
+		is_placing = false
 		return
 	if new_tower.cost > cash:
 		emit_signal("tower_chosen")
 		new_tower.queue_free()
+		is_placing = false
 		return
 	self.cash -= new_tower.cost
 	new_tower.timer.start(new_tower.attack_delay)
 	emit_signal("tower_chosen")
 	is_placing = false
-	new_tower.get_node("Button").disabled = false
 	new_tower.selected()
+	new_tower.get_node("Button").disabled = false
+	
 
 func next_map():
 	$Transition/AnimationPlayer.current_animation = "in"
@@ -108,7 +112,7 @@ func next_map():
 	call_deferred("move_child", new_map, 0)
 	game_ui.reset()
 	emit_signal("mouse_clicked", true)
-	self.cash = 70
+	self.cash = 85
 	self.wave = -1
 	new_wave()
 	$Transition/AnimationPlayer.current_animation = "out"

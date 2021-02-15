@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://main/ui/GameUI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/main.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://main/sound/hurt.wav" type="AudioStream" id=13]
 [ext_resource path="res://main/sound/music.ogg" type="AudioStream" id=14]
 [ext_resource path="res://main/map/ranch/Ranch2.tscn" type="PackedScene" id=15]
+[ext_resource path="res://main/tower/neutrophil/Neutrophil.tscn" type="PackedScene" id=16]
 
 [sub_resource type="Animation" id=1]
 resource_name = "in"
@@ -77,7 +78,7 @@ script = ExtResource( 2 )
 win = ExtResource( 8 )
 death = ExtResource( 7 )
 maps = [ ExtResource( 9 ), ExtResource( 15 ), ExtResource( 5 ) ]
-towers = [ ExtResource( 3 ), ExtResource( 10 ), ExtResource( 11 ) ]
+towers = [ ExtResource( 3 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 16 ) ]
 
 [node name="Map" type="Node" parent="."]
 

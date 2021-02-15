@@ -8,9 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Area2D",
+"class": "Projectile",
+"language": "GDScript",
+"path": "res://main/projectile/projectile.gd"
+} ]
 _global_script_class_icons={
-
+"Projectile": ""
 }
 
 [application]
@@ -21,6 +26,11 @@ run/disable_stdout=true
 boot_splash/image="res://main/ui/intro/Covid Defender.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
+
+[debug]
+
+gdscript/warnings/unused_argument=false
+gdscript/warnings/return_value_discarded=false
 
 [display]
 
